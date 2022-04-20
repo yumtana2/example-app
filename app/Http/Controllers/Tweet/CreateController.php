@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Tweet;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Tweet\createRequest;
 use App\Models\Tweet;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class CreateController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -14,10 +15,11 @@ class IndexController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(createRequest $request)
     {
-//        $tweets = Tweet::all();
-        $tweets = Tweet::orderBy('created_at', 'DESC')->get();
-        return view('tweet.index')->with('tweets', $tweets);
+        $tweet = new Tweet;
+        $tweet->content = $request->tweet();
+        $tweet->save();
+        return redirect()->route('tweet.index');
     }
 }
