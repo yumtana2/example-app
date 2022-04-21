@@ -15,17 +15,20 @@
             @csrf
             <label for="tweet-content">つぶやき</label>
             <span>140文字まで</span>
-            <textarea id="tweet-content" type="text" name="tweet" placeholder="つぶやきを入力"></textarea>
+            <textarea id="tweet-content" name="tweet" placeholder="つぶやきを入力"></textarea>
             @error('tweet')
             <p style="color: red;">{{ $message }}</p>
             @enderror
             <button type="submit">投稿</button>
         </form>
     </div>
-    <div>
-        @foreach($tweets as $tweet)
-        <p>{{ $tweet->toJson(JSON_UNESCAPED_UNICODE) }}</p>
-        @endforeach
-    </div>
+    @foreach($tweets as $tweet)
+        <details>
+            <summary>{{ $tweet->content }}</summary>
+            <div>
+                <a href="{{ route('tweet.update.index', ['tweetId' => $tweet->id]) }}">編集</a>
+            </div>
+        </details>
+    @endforeach
 </body>
 </html>
