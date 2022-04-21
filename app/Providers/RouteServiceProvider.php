@@ -26,6 +26,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // web.phpにパスパラメータを書かずに、ここにパラメータの設定を書くとグローバルの設定になる
+        // 下記設定以外のパラメータがきた場合は、404を返す
+        Route::pattern('tweetId', '[0-9]+');
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
