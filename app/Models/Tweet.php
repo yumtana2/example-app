@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Tweet extends Model
 {
     use HasFactory;
+
 //    protected $primaryKey = 'tweet_id';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

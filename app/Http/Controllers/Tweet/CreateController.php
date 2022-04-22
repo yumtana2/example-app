@@ -13,11 +13,12 @@ class CreateController extends Controller
      * Handle the incoming request.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function __invoke(createRequest $request)
     {
         $tweet = new Tweet;
+        $tweet->userId = $request->userId();
         $tweet->content = $request->tweet();
         $tweet->save();
         return redirect()->route('tweet.index');
