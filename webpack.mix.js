@@ -16,3 +16,8 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
     require('tailwindcss'),
     require('autoprefixer'),
 ]);
+
+// 本番向けのビルドのみ、キャッシュバスティングのためファイル名にバージョニングする
+if(mix.inProduction()){
+    mix.version();
+}
