@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Destroy an authenticated session.
-     *
+     * ログアウト時に実行されるメソッド。ログアウト後の遷移先はトップページ。
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -49,6 +49,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/tweet');
     }
 }
