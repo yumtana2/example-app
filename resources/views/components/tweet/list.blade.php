@@ -14,7 +14,6 @@
                     </p>
                 </div>
                 <div>
-                    {{-- TODO: 編集と削除 --}}
                     <x-tweet.options :tweet-id="$tweet->id" :user-id="$tweet->user_id"></x-tweet.options>
                 </div>
             </li>
