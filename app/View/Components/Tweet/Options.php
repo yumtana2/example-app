@@ -29,7 +29,6 @@ class Options extends Component
     {
         return view('components.tweet.options')
             ->with('tweetId', $this->tweetId)
-            ->with('myTweet', \Illuminate\Support\Facades\Auth::id() ===
-                $this->userId);
+            ->with('myTweet', \Illuminate\Support\Facades\Auth::id() === $this->userId);
     }
 }
