@@ -12,6 +12,7 @@
                     <p class="text-gray-600">
                         {!! nl2br(e($tweet->content)) !!}
                     </p>
+                    <x-tweet.images :images="$tweet->images"/>
                 </div>
                 <div>
                     <x-tweet.options :tweet-id="$tweet->id" :user-id="$tweet->user_id"></x-tweet.options>

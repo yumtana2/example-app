@@ -24,7 +24,10 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'tweet' => 'required|max:140'
+            'tweet' => 'required|max:140',
+            'images' => 'array|max:4',
+            // images配列の中身に対しての制約は[.*]を使って宣言する
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 
@@ -37,5 +40,11 @@ class CreateRequest extends FormRequest
     public function userId(): int
     {
         return $this->user()->id;
+    }
+
+    public function images(): array
+    {
+        // ファイル投稿なので、inputではなくfileで取得する
+        return $this->file('images', []);
     }
 }
