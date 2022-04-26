@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
         // 毎日
         $schedule->command('sample-command')->daily();
         // 毎日13時
-        $schedule->command('sample-command')->dailyAt('13:00');
+        $schedule->command('mail:send-daily-tweet-count-mail')->dailyAt('11:00');
         // 毎日3:15(cron表記)
         $schedule->command('sample-command')->cron('15 3 * * *');
     }
