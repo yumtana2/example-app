@@ -7,6 +7,26 @@ use PHPUnit\Framework\TestCase;
 
 class TweetServiceTest extends TestCase
 {
+    public function test_get_tweets()
+    {
+        $mock = Mockery::mock('alias:App\Models\Tweet');
+        $mock->shouldReceive('with->orderBy->get')->andReturn([
+            (object)[
+                'id' => 1,
+                'user_id' => 1
+            ], [
+                'id' => 2,
+                'user_id' => 2
+            ], [
+                'id' => 3,
+                'user_id' => 3
+            ]]);
+
+        $tweetService = new TweetService();
+        $tweets = $tweetService->getTweets();
+        $this->assertCount(3, $tweets);
+    }
+
     /**
      * A basic unit test example.
      *

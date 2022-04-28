@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Storage;
 
 class TweetService
 {
+    /**
+     * ツイート+画像を作成日付降順で取得
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function getTweets()
     {
         return Tweet::with('images')->orderBy('created_at', 'DESC')->get();
