@@ -5,7 +5,6 @@ namespace Tests\Feature\Tweet;
 use App\Models\Tweet;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class DeleteTest extends TestCase
