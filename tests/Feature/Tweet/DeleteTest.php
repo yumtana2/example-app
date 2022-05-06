@@ -19,6 +19,7 @@ class DeleteTest extends TestCase
      */
     public function test_delete_successed()
     {
+        $this->markTestSkipped('スキップ');
         $user = User::factory()->create(); // ユーザーを作成
         $tweet = Tweet::factory()->create(['user_id' => $user->id]); // つぶやきを作成
 
